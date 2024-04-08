@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            function simpleintrest(){
+                const p = document.getElementById("amount").value;
+                const r = document.getElementById("intrest").value;
+                const t = document.getElementById("time").value;
+                const totalIntrest = (parseFloat(p)*parseFloat(t)*parseFloat(r))/100;
+                const totalamount = totalIntrest + parseFloat(p);
+                const element = document.getElementById("FinalIntrest");
+                element.innerHTML = "Total amount is : "+totalamount+"<br>total intrest is: "+totalIntrest;
+            }
+        </script>
+    </head>
+    <body>
+        <input id="amount" type="text" placeholder="principle amount"><br></br>
+        <input id="intrest" type="text" placeholder="rate of intrest"><br></br>
+        <input id="time" type="text" placeholder="time in years"><br><br>
+        <button onclick="simpleintrest()">Calculate intrest</button>
+        <div id="FinalIntrest"></div>
+    </body>
+</html>

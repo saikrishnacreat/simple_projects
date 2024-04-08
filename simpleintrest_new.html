@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            let timeout;
+            function debounce(){
+                clearTimeout(timeout);
+                setTimeout(function(){
+                    simpleintrest()
+                },10)
+            }
+            function simpleintrest(){
+                const p = parseFloat(document.getElementById("amount").value)
+                const r = parseFloat(document.getElementById("intrest").value);
+                const t = parseFloat(document.getElementById("time").value);
+                fetch("https://sum-server.100xdevs.com/interest?principal="+p+"&rate="+r+"&time="+t)
+                    .then(function(response){
+                        response.text()
+                        .then(function(ans){
+                            document.getElementById("FinalIntrest").innerHTML = ans;
+                        })
+                    })
+            }
+        </script>
+    </head>
+    <body>
+        <input onchange="debounce()" id="amount" type="text" placeholder="principle amount"><br></br>
+        <input onchange="debounce()" id="intrest" type="text" placeholder="rate of intrest"><br></br>
+        <input onchange="debounce()" id="time" type="text" placeholder="time in years"><br><br>
+        <!-- <button onclick="simpleintrest()">Calculate intrest</button> -->
+        <div id="FinalIntrest"></div>
+    </body>
+</html>
